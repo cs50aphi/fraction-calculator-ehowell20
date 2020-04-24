@@ -53,22 +53,31 @@ public class Fraction
     // returns numerator
     public int getNumerator()
     {
-        
+        return numerator;
     }
     // returns denominator
     public int getDenominator()
     {
-        
+        return denominator;
     }
     // returns string form of fraction
     public String toString()
     {
-        
+        if (denominator == 1)
+        {
+            return Integer.toString(numerator);
+        }
+        else
+        {
+            String num = Integer.toString(numerator);
+            String dem = Integer.toString(denominator);
+            return num + "/" + dem;
+        }
     }
     // returns result of numerator / denominator
     public double toDouble()
     {
-        
+        return numerator / denominator;
     }
     // returns the sum of the fractions
     public Fraction add(Fraction other)

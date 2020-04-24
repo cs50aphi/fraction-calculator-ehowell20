@@ -7,7 +7,7 @@ public class Fraction
     private int denominator;
 
     // constructors
-    public double Fraction(int numerator, int denominator)
+    public Fraction(int numerator, int denominator)
     {
         this.numerator = numerator;
         this.denominator = denominator;
@@ -27,32 +27,25 @@ public class Fraction
             // if numerator is also negative, cancel negatives
             if (numerator < 0)
             {
-                return (Math.abs(numerator)) / (Math.abs(denominator));
+                numerator = Math.abs(numerator);
+                denominator = Math.abs(denominator);
             }
             // if numerator is positive, move negative sign to numerator
             else
             {
-                return (-1 * numerator) / (Math.abs(denominator));
+                numerator = -1 * numerator;
+                denominator = Math.abs(denominator);
             }
-        }
-        // if no negatives, return fraction
-        else
-        {
-            return numerator / denominator;
         }
     }
     // fraction with only numerator has denominator of 1
-    public double Fraction(int numerator)
+    public Fraction(int numerator)
     {
-        this.numerator = numerator;
-        denominator = 1;
-        return numerator / denominator;
+        this(numerator, 1);
     }
     // fraction with no numerator or denominator equals 0 (0/1)
-    public double Fraction()
+    public Fraction()
     {
-        numerator = 0;
-        denominator = 1;
-        return numerator / denominator;
+        this(0, 1);
     }
 }

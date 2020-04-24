@@ -48,4 +48,61 @@ public class Fraction
     {
         this(0, 1);
     }
+    
+    // methods
+    // returns numerator
+    public int getNumerator()
+    {
+        
+    }
+    // returns denominator
+    public int getDenominator()
+    {
+        
+    }
+    // returns string form of fraction
+    public String toString()
+    {
+        
+    }
+    // returns result of numerator / denominator
+    public double toDouble()
+    {
+        
+    }
+    // returns the sum of the fractions
+    public Fraction add(Fraction other)
+    {
+        
+    }
+    // returns difference of the fractions (other - fraction)
+    public Fraction subtract(Fraction other)
+    {
+        
+    }
+    // returns product of the fractions
+    public Fraction multiply(Fraction other)
+    {
+        
+    }
+    // returns quotient of two fractions (other / fraction)
+    public Fraction divide(Fraction other)
+    {
+        // illegal exception if dividing by 0
+    }
+    // checks if fractions are equal
+    public boolean equals(Object other)
+    {
+        
+    }
+    // converts the fraction to lowest terms
+    public void toLowestTerms()
+    {
+        
+    }
+    // determinds greatest common divisor between two ints
+    public int gcd(int num, int dem)
+    {
+        
+    }
 }

@@ -103,12 +103,33 @@ public class Fraction
     // returns difference of the fractions (other - fraction)
     public Fraction subtract(Fraction other)
     {
-
+        int newDen = 0;
+        int newNum = 0;
+        // if denominators are the same, just subtract numerators
+        if (other.getDenominator() == denominator)
+        {
+            newNum = other.getNumerator() - numerator;
+            return new Fraction(newNum, denominator);
+        }
+        // if not, multiply other num and den, num and other den
+        else
+        {
+            // subtract multiplied numbers and set as new numerator
+            newNum = (other.getNumerator() * denominator) - (numerator * other.getDenominator());
+            // denominator is other den * den 2
+            newDen = other.getDenominator() * denominator;
+            return new Fraction(newNum, newDen);
+        }
     }
     // returns product of the fractions
     public Fraction multiply(Fraction other)
     {
-
+        // multiply numerators
+        int newNum = other.getNumerator() * numerator;
+        // multiply denominators
+        int newDen = other.getDenominator() * denominator;
+        // return product
+        return Fraction (newNum, newDen);
     }
     // returns quotient of two fractions (other / fraction)
     public Fraction divide(Fraction other)

@@ -129,12 +129,24 @@ public class Fraction
         // multiply denominators
         int newDen = other.getDenominator() * denominator;
         // return product
-        return Fraction (newNum, newDen);
+        return new Fraction(newNum, newDen);
     }
     // returns quotient of two fractions (other / fraction)
     public Fraction divide(Fraction other)
     {
         // illegal exception if dividing by 0
+        try
+        {
+            int test = denominator / numerator;
+        }
+        catch (ArithmeticException e)
+        {
+            System.out.println("Cannot divide by 0");
+        }
+        // reciprocal of fraction
+        Fraction reciprocal = new Fraction(denominator, numerator);
+        // fraction other multiplied by reciprocal of fraction
+        return other.multiply(reciprocal);
     }
     // checks if fractions are equal
     public boolean equals(Object other)

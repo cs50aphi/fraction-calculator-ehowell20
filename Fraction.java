@@ -48,7 +48,7 @@ public class Fraction
     {
         this(0, 1);
     }
-    
+
     // methods
     // returns numerator
     public int getNumerator()
@@ -70,8 +70,8 @@ public class Fraction
         else
         {
             String num = Integer.toString(numerator);
-            String dem = Integer.toString(denominator);
-            return num + "/" + dem;
+            String den = Integer.toString(denominator);
+            return num + "/" + den;
         }
     }
     // returns result of numerator / denominator
@@ -82,17 +82,33 @@ public class Fraction
     // returns the sum of the fractions
     public Fraction add(Fraction other)
     {
-        
+        int newDen = 0;
+        int newNum = 0;
+        // if denominators are the same, just add numerators
+        if (other.getDenominator() == denominator)
+        {
+            newNum = other.getNumerator() + numerator;
+            return new Fraction(newNum, denominator);
+        }
+        // if not, multiply other num and den, num and other den
+        else
+        {
+            // add multiplied numbers and set as new numerator
+            newNum = (other.getNumerator() * denominator) + (numerator * other.getDenominator());
+            // denominator is other den * den 2
+            newDen = other.getDenominator() * denominator;
+            return new Fraction(newNum, newDen);
+        }
     }
     // returns difference of the fractions (other - fraction)
     public Fraction subtract(Fraction other)
     {
-        
+
     }
     // returns product of the fractions
     public Fraction multiply(Fraction other)
     {
-        
+
     }
     // returns quotient of two fractions (other / fraction)
     public Fraction divide(Fraction other)
@@ -102,16 +118,16 @@ public class Fraction
     // checks if fractions are equal
     public boolean equals(Object other)
     {
-        
+
     }
     // converts the fraction to lowest terms
     public void toLowestTerms()
     {
-        
+
     }
     // determinds greatest common divisor between two ints
-    public int gcd(int num, int dem)
+    public int gcd(int num, int den)
     {
-        
+
     }
 }

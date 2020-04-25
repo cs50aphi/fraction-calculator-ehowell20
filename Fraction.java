@@ -178,8 +178,11 @@ public class Fraction
     public void toLowestTerms()
     {
         // use gcd() to find gcd of numerator and denominator
+        int gcd = gcd(numerator, denominator);
         // divide both numerator and denominator by gcd
         // set numerator and denominator equal to divided values
+        numerator = numerator / gcd;
+        denominator = denominator / gcd;
     }
     // determinds greatest common divisor between two ints
     public static int gcd(int num, int den)

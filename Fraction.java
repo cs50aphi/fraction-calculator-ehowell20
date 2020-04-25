@@ -151,12 +151,33 @@ public class Fraction
     // checks if fractions are equal
     public boolean equals(Object other)
     {
-
+        // if object other is a fraction, cast to Fraction
+        if (other instanceof Fraction)
+        {
+            Fraction test = other;
+        }
+        // if object other is not a fraction, they are not equal
+        else
+        {
+            return false;
+        }
+        // create usable fraction equal to one being tested (not fraction other)
+        Fraction frac = new Fraction(numerator, denominator);
+        // if the difference between the two is 0, fractions are equal
+        if (frac.subtract(test) == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
     }
     // converts the fraction to lowest terms
     public void toLowestTerms()
     {
-
+        
     }
     // determinds greatest common divisor between two ints
     public int gcd(int num, int den)

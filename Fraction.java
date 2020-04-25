@@ -177,11 +177,25 @@ public class Fraction
     // converts the fraction to lowest terms
     public void toLowestTerms()
     {
-        
+        // use gcd() to find gcd of numerator and denominator
+        // divide both numerator and denominator by gcd
+        // set numerator and denominator equal to divided values
     }
     // determinds greatest common divisor between two ints
     public static int gcd(int num, int den)
     {
-        
+        int remainder = 0;
+        // while num and den are not 0
+        while (num != 0 && den != 0)
+        {
+            // find remainder of num divided by den
+            remainder = num % den;
+            // set num as den
+            num = den;
+            // set den to remainder
+            den = remainder;
+        }
+        // num is gcd
+        return num;
     }
 }

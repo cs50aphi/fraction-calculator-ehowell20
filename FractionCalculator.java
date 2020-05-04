@@ -5,6 +5,51 @@ public class FractionCalculator
     public static void main(String[] args)
     {
         Scanner kb = new Scanner(System.in);
+        System.out.println("Welcome to the Fraction Calculator!");
+        System.out.println("It will add, subtract, multiply, and divide fractions until you type Q to quit.");
+        System.out.println("Please enter your fractions in the form a/b where a and b are both integers.");
+        String op = getOperation(kb);
+        Fraction frac1 = getFraction(kb);
+        Fraction frac2 = getFraction(kb);
+        // perform specified operation
+        Fraction result;
+        boolean equals;
+        switch (op)
+        {
+            case "+":
+                // add
+                result = frac1.add(frac2);
+                // print result
+                System.out.println(frac1.toString() + op + frac2.toString() + "is" + result.toString());
+                break;
+            case "-":
+                // subtract
+                result = frac1.subtract(frac2);
+                // print result
+                System.out.println(frac1.toString() + op + frac2.toString() + "is" + result.toString());
+                break;
+            case "*":
+                // multiply
+                result = frac1.multiply(frac2);
+                // print result
+                System.out.println(frac1.toString() + op + frac2.toString() + "is" + result.toString());
+                break;
+            case "/":
+                // divide
+                result = frac1.divide(frac2);
+                // print result
+                System.out.println(frac1.toString() + op + frac2.toString() + "is" + result.toString());
+                break;
+            case "=":
+                // compare
+                equals = frac1.equals(frac2);
+                // print result
+                System.out.println(frac1.toString() + op + frac2.toString() + "is" + equals);
+                break;
+            case "q":
+            case "Q":
+                System.out.println("Goodbye!");
+        }
     }
     // asks user for valid operation
     public static String getOperation(Scanner kb)
@@ -40,11 +85,105 @@ public class FractionCalculator
     // return true if valid fraction
     public static boolean validFraction(String fraction)
     {
-
+        // check for "-" in string
+        int neg = fraction.indexOf("-");
+        // if neg sign is in fraction
+        if (neg != -1)
+        {
+            // if first character, remove it
+            if (neg == 0)
+            {
+                fraction = fraction.substring(1, fraction.length());
+            }
+            // if the negative sign is not the first character, invalid fraction
+            else
+            {
+                return false;
+            }
+        }
+        // check for "/" in string
+        int div = fraction.indexOf("/");
+        // if no "/", check if everything in string is a number
+        if (div == -1)
+        {
+            try
+            {
+                int frac = Integer.parseInt(fraction);
+            }
+            catch (NumberFormatException e)
+            {
+                return false;
+            }
+            return true;
+        }
+        // is there is, make substrings for numerator and denominator
+        else
+        {
+            String num = fraction.substring(0, div);
+            String den = fraction.substring(div, fraction.length());
+            // substrings should be non empty
+            if (num.isEmpty() || den.isEmpty())
+            {
+                return false;
+            }
+            // substrings should be only numbers
+            try
+            {
+                // try convert string to int
+                int numer = Integer.parseInt(num);
+            }
+            catch (NumberFormatException e)
+            {
+                return false;
+            }
+            int denom = 1;
+            try
+            {
+                // try convert string to int
+                denom = Integer.parseInt(den);
+            }
+            catch (NumberFormatException e)
+            {
+                return false;
+            }
+            // denominator substring cannot be 0
+            if (denom == 0)
+            {
+                return false;
+            }
+        }
+        return true;
     }
     // asks user for valid fraction
     public static Fraction getFraction(Scanner kb)
     {
-
+        boolean valid = false;
+        // do until given fraction is valid
+        do
+        {
+            System.out.print("Please enter a fraction (a/b) or integer (a): ");
+            String fraction = kb.nextLine();
+            // valid fraction, return fraction
+            if (validFraction(fraction))
+            {
+                valid = true;
+                // check for "/" in string
+                int div = fraction.indexOf("/");
+                // if no "/", enter fraction as numerator
+                if (div == -1)
+                {
+                    return new Fraction(Integer.parseInt(fraction));
+                }
+                // if "/", split numerator and denominator and enter into fraction
+                else
+                {
+                    int num = Integer.parseInt(fraction.substring(0, div));
+                    int den = Integer.parseInt(fraction.substring(div, fraction.length()));
+                    return new Fraction(num, den);
+                }
+            }
+        }
+        while (!valid);
+        return new Fraction();
     }
 }

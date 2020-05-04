@@ -135,13 +135,9 @@ public class Fraction
     public Fraction divide(Fraction other)
     {
         // illegal exception if dividing by 0
-        try
+        if (denominator == 0)
         {
-            int test = denominator / numerator;
-        }
-        catch (ArithmeticException e)
-        {
-            System.out.println("Cannot divide by 0");
+            throw new IllegalArgumentException("Cannot divide by 0");
         }
         // reciprocal of fraction
         Fraction reciprocal = new Fraction(denominator, numerator);

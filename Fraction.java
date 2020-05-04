@@ -108,14 +108,14 @@ public class Fraction
         // if denominators are the same, just subtract numerators
         if (other.getDenominator() == denominator)
         {
-            newNum = other.getNumerator() - numerator;
+            newNum = numerator - other.getNumerator();
             return new Fraction(newNum, denominator);
         }
         // if not, multiply other num and den, num and other den
         else
         {
             // subtract multiplied numbers and set as new numerator
-            newNum = (other.getNumerator() * denominator) - (numerator * other.getDenominator());
+            newNum = (numerator * other.getDenominator()) - (other.getNumerator() * denominator);
             // denominator is other den * den 2
             newDen = other.getDenominator() * denominator;
             return new Fraction(newNum, newDen);

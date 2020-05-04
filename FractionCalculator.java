@@ -24,32 +24,40 @@ public class FractionCalculator
             case "+":
                 // add
                 result = frac1.add(frac2);
+                // simplify fraction
+                result.toLowestTerms();
                 // print result
                 System.out.println(frac1 + " " + op + " " + frac2 + " is " + result);
                 break;
             case "-":
                 // subtract
                 result = frac1.subtract(frac2);
+                // simplify fraction
+                result.toLowestTerms();
                 // print result
-                System.out.println(frac1 + op + frac2 + "is" + result);
+                System.out.println(frac1 + " " + op + " " + frac2 + " is " + result);
                 break;
             case "*":
                 // multiply
                 result = frac1.multiply(frac2);
+                // simplify fraction
+                result.toLowestTerms();
                 // print result
-                System.out.println(frac1 + op + frac2 + "is" + result);
+                System.out.println(frac1 + " " + op + " " + frac2 + " is " + result);
                 break;
             case "/":
                 // divide
                 result = frac1.divide(frac2);
+                // simplify fraction
+                result.toLowestTerms();
                 // print result
-                System.out.println(frac1 + op + frac2 + "is" + result);
+                System.out.println(frac1 + " " + op + " " + frac2 + " is " + result);
                 break;
             case "=":
                 // compare
                 equals = frac1.equals(frac2);
                 // print result
-                System.out.println(frac1 + op + frac2 + "is" + equals);
+                System.out.println(frac1 + " " + op + " " + frac2 + " is " + equals);
         }
     }
     // asks user for valid operation

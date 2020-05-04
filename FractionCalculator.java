@@ -9,6 +9,11 @@ public class FractionCalculator
         System.out.println("It will add, subtract, multiply, and divide fractions until you type Q to quit.");
         System.out.println("Please enter your fractions in the form a/b where a and b are both integers.");
         String op = getOperation(kb);
+        if (op.equals("Q") || op.equals("q"))
+        {
+            System.out.println("Goodbye!");
+            System.exit(0);
+        }
         Fraction frac1 = getFraction(kb);
         Fraction frac2 = getFraction(kb);
         // perform specified operation
@@ -20,35 +25,31 @@ public class FractionCalculator
                 // add
                 result = frac1.add(frac2);
                 // print result
-                System.out.println(frac1.toString() + op + frac2.toString() + "is" + result.toString());
+                System.out.println(frac1 + " " + op + " " + frac2 + " is " + result);
                 break;
             case "-":
                 // subtract
                 result = frac1.subtract(frac2);
                 // print result
-                System.out.println(frac1.toString() + op + frac2.toString() + "is" + result.toString());
+                System.out.println(frac1 + op + frac2 + "is" + result);
                 break;
             case "*":
                 // multiply
                 result = frac1.multiply(frac2);
                 // print result
-                System.out.println(frac1.toString() + op + frac2.toString() + "is" + result.toString());
+                System.out.println(frac1 + op + frac2 + "is" + result);
                 break;
             case "/":
                 // divide
                 result = frac1.divide(frac2);
                 // print result
-                System.out.println(frac1.toString() + op + frac2.toString() + "is" + result.toString());
+                System.out.println(frac1 + op + frac2 + "is" + result);
                 break;
             case "=":
                 // compare
                 equals = frac1.equals(frac2);
                 // print result
-                System.out.println(frac1.toString() + op + frac2.toString() + "is" + equals);
-                break;
-            case "q":
-            case "Q":
-                System.out.println("Goodbye!");
+                System.out.println(frac1 + op + frac2 + "is" + equals);
         }
     }
     // asks user for valid operation
@@ -120,7 +121,7 @@ public class FractionCalculator
         else
         {
             String num = fraction.substring(0, div);
-            String den = fraction.substring(div, fraction.length());
+            String den = fraction.substring(div + 1, fraction.length());
             // substrings should be non empty
             if (num.isEmpty() || den.isEmpty())
             {
@@ -151,8 +152,11 @@ public class FractionCalculator
             {
                 return false;
             }
+            else
+            {
+                return true;
+            }
         }
-        return true;
     }
     // asks user for valid fraction
     public static Fraction getFraction(Scanner kb)
@@ -178,7 +182,7 @@ public class FractionCalculator
                 else
                 {
                     int num = Integer.parseInt(fraction.substring(0, div));
-                    int den = Integer.parseInt(fraction.substring(div, fraction.length()));
+                    int den = Integer.parseInt(fraction.substring(div + 1, fraction.length()));
                     return new Fraction(num, den);
                 }
             }
